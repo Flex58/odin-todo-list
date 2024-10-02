@@ -1,9 +1,12 @@
 import "./styles.css";
-import Todo from "./modules/todo";
+import Project from "./modules/project";
 
-const test = new Todo("test", "this is a test", "tomorrow", "high")
+const test = new Project()
 
-console.log(test)
-test.complete()
-test.setNotes("this is a test again")
-console.log(test.notes)
+test.createTodo("test")
+
+console.log(test.todoList)
+test.createTodo("test2")
+console.log(test.todoList)
+test.todoList[0].setNotes("test")
+console.log(test.todoList[0])
