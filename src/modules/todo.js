@@ -13,7 +13,11 @@ class Todo {
     }
 
     setNotes(note) {
-        this.notes = note;
+        return this.notes = note;
+    }
+
+    setPriority(priority) {
+        return this.priority = priority;
     }
 }
 
