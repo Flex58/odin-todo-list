@@ -1,4 +1,7 @@
 const renderProject = (project) => {
+    const projectName = document.createElement("h1")
+    projectName.textContent = project.name;
+    document.querySelector("#content").appendChild(projectName)
     for (let i in project.todoList) {
         const card = document.createElement("div")
         card.className = "card"
