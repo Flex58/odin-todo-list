@@ -1,8 +1,12 @@
 const renderProject = (project) => {
+    const projectDiv = document.createElement("div");
+    projectDiv.id = "project";
     const projectName = document.createElement("h1")
     projectName.textContent = project.name;
-    document.querySelector("#content").appendChild(projectName)
+    projectDiv.appendChild(projectName)
+    
     for (let i in project.todoList) {
+        
         const card = document.createElement("div")
         card.className = "card"
         const title = document.createElement("h2");
@@ -23,8 +27,10 @@ const renderProject = (project) => {
         card.appendChild(dueDate)
         card.appendChild(priority)
         card.appendChild(notes)
-        document.querySelector("#content").appendChild(card)
+        projectDiv.appendChild(card)
+
     }
+    document.querySelector("#content").appendChild(projectDiv)
 }
 
 export default renderProject;

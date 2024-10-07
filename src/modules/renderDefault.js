@@ -7,6 +7,8 @@ const renderDefault = () => {
     defaultProject.createTodo("Example Todo", "This is your description", "today", "High Priority", "Examples Notes")
 
     renderProject(defaultProject)
+
+    return defaultProject;
 }
 
 export default renderDefault;
