@@ -9,7 +9,6 @@ function activeProjectObj() {
         return this.activeProject;
     }
 
-    return this.activeProject;
 };
 
 const activeProject = new activeProjectObj()

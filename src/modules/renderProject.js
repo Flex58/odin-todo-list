@@ -1,14 +1,26 @@
+import renderCreateTodo from "./renderCreateTodo";
+
 const renderProject = (project) => {
     const projectDiv = document.createElement("div");
     projectDiv.id = "project";
+    
     const projectName = document.createElement("h1")
     projectName.textContent = project.name;
     projectDiv.appendChild(projectName)
+
+    const newTodoBtn = document.createElement("button")
+    newTodoBtn.textContent = "New Todo"
+    newTodoBtn.addEventListener("click", () => {
+        renderCreateTodo();
+    })
+
+    projectDiv.appendChild(newTodoBtn)
     
     for (let i in project.todoList) {
         
         const card = document.createElement("div")
         card.className = "card"
+        card.id = i
         const title = document.createElement("h2");
         const description = document.createElement("p");
         const dueDate = document.createElement("div")
