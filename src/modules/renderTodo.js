@@ -20,6 +20,8 @@ const renderTodo = (project) => {
         dueDate.textContent = project.todoList[i].dueDate;
         priority.textContent = project.todoList[i].priority;
         notes.textContent = project.todoList[i].notes;
+        
+        
         removeBtn.textContent = "Delete";
         editBtn.textContent = "Edit";
         
@@ -36,6 +38,19 @@ const renderTodo = (project) => {
         card.appendChild(dueDate)
         card.appendChild(priority)
         card.appendChild(notes)
+
+
+        for (let j in project.todoList[i].tasks) {
+            const taskInput = document.createElement("input")
+            const taskLabel = document.createElement("label")
+            taskInput.id = "task"
+            taskLabel.for =" task"
+            taskInput.type = "checkbox"
+            taskLabel.textContent = project.todoList[i].tasks[j]
+            card.appendChild(taskLabel)
+            card.appendChild(taskInput)
+        }
+
         card.appendChild(removeBtn)
         card.appendChild(editBtn)
         document.querySelector("#project").appendChild(card)

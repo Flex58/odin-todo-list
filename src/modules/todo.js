@@ -1,11 +1,13 @@
 class Todo {
-    constructor (title, description, dueDate, priority, notes) {
+    constructor (title, description, dueDate, priority, notes, task) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
         this.priority = priority;
         this.notes = notes;
+        this.tasks = [task]
     }
+    
     completeStatus = false;
 
     complete() {
@@ -30,6 +32,10 @@ class Todo {
 
     setPriority(priority) {
         return this.priority = priority;
+    }
+
+    setTask(task) {
+        return this.tasks.push(task);
     }
 }
 
