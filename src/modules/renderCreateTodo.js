@@ -1,4 +1,3 @@
-import Project from "./project";
 import activeProject from "./activeProject";
 import renderProject from "./renderProject";
 import clearScreen from "./clearScreen";
@@ -17,6 +16,7 @@ const renderCreateTodo = () => {
     titleLabel.textContent = "Title"
     const titleInput = document.createElement("input")
     titleInput.id = "title"
+    titleInput.required = "true"
 
     const descriptionLabel = document.createElement("label")
     descriptionLabel.for = "description"
@@ -63,6 +63,7 @@ const renderCreateTodo = () => {
 
     const submit = document.createElement("button")
     submit.type = "submit"
+    submit.textContent = "Create Todo"
 
     form.addEventListener("submit", (e) => {
         dialog.open = "false"

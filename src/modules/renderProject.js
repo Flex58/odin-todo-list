@@ -1,4 +1,6 @@
 import renderCreateTodo from "./renderCreateTodo";
+import clearScreen from "./clearScreen";
+import removeTodoPopup from "./removeTodoPopup";
 
 const renderProject = (project) => {
     const projectDiv = document.createElement("div");
@@ -26,19 +28,25 @@ const renderProject = (project) => {
         const dueDate = document.createElement("div")
         const priority = document.createElement("div")
         const notes = document.createElement("div")
+        const removeBtn = document.createElement("button")
 
         title.textContent = project.todoList[i].title;
         description.textContent = project.todoList[i].description;
         dueDate.textContent = project.todoList[i].dueDate;
         priority.textContent = project.todoList[i].priority;
         notes.textContent = project.todoList[i].notes;
+        removeBtn.textContent = "Delete";
         
+        removeBtn.addEventListener("click", () => {
+            removeTodoPopup(card.id)
+        })
 
         card.appendChild(title)
         card.appendChild(description)
         card.appendChild(dueDate)
         card.appendChild(priority)
         card.appendChild(notes)
+        card.appendChild(removeBtn)
         projectDiv.appendChild(card)
 
     }
