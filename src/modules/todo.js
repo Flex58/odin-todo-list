@@ -12,6 +12,18 @@ class Todo {
        return this.completeStatus = true;
     }
 
+    setTitle(title) {
+        return this.title = title;
+    }
+
+    setDescription(description) {
+        return this.description = description;
+    }
+
+    setDueDate(dueDate) {
+        return this.dueDate = dueDate;
+    }
+
     setNotes(note) {
         return this.notes = note;
     }

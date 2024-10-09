@@ -1,15 +1,16 @@
 import activeProject from "./activeProject";
-import renderProject from "./renderProject";
 import clearScreen from "./clearScreen";
+import renderProject from "./renderProject";
 
-const renderCreateTodo = () => {
-    const content = document.querySelector("#content")
-    
-    const dialog = document.createElement("dialog")
-    dialog.open = "true";
-    
+const editTodo = (id) => {
+    const active = activeProject.getActiveProject().todoList[id]
+    const card = document.getElementById(id)
+    while (card.hasChildNodes()){
+        card.removeChild(card.firstChild)
+    }
+
     const form = document.createElement("form")
-    form.id = "createTodoForm"
+    form.id = "editTodoForm"
     
     const titleLabel = document.createElement("label")
     titleLabel.for = "title"
@@ -17,12 +18,14 @@ const renderCreateTodo = () => {
     const titleInput = document.createElement("input")
     titleInput.id = "title"
     titleInput.required = "true"
+    titleInput.value = active.title
 
     const descriptionLabel = document.createElement("label")
     descriptionLabel.for = "description"
     descriptionLabel.textContent = "Description"
     const descriptionInput = document.createElement("input")
     descriptionInput.id = "description"
+    descriptionInput.value = active.description
 
     const dueDateLabel = document.createElement("label")
     dueDateLabel.for = "dueDate"
@@ -30,6 +33,7 @@ const renderCreateTodo = () => {
     const dueDateInput = document.createElement("input")
     dueDateInput.type = "date"
     dueDateInput.id = "dueDate"
+    dueDateInput.value = active.dueDate
 
     const priorityLabel = document.createElement("label")
     priorityLabel.for = "priority"
@@ -41,7 +45,6 @@ const renderCreateTodo = () => {
     priorityOption1.value = "Priority"
     priorityOption1.textContent = "Priority"
     priorityOption1.disabled = "True"
-    priorityOption1.selected = "True"
     const priorityOption2 = document.createElement("option")
     priorityOption2.value = "High"
     priorityOption2.textContent = "High"
@@ -55,23 +58,36 @@ const renderCreateTodo = () => {
     priorityInput.appendChild(priorityOption2)
     priorityInput.appendChild(priorityOption3)
     priorityInput.appendChild(priorityOption4)
+    if (priorityOption4.textContent == active.priority) {
+        priorityOption4.selected = "true"
+    }
+    else if (priorityOption2.textContent == active.priority) {
+        priorityOption2.selected = "true"
+    }
+    else if (priorityOption3.textContent == active.priority) {
+        priorityOption3.selected = "true"
+    }
 
     const notesLabel = document.createElement("label")
     notesLabel.for = "notes"
     notesLabel.textContent = "Notes"
     const notesInput = document.createElement("textarea")
     notesInput.id = "notes"
+    notesInput.value = active.notes 
 
     const submit = document.createElement("button")
     submit.type = "submit"
-    submit.textContent = "Create Todo"
+    submit.textContent = "Finish Edit"
 
     form.addEventListener("submit", (e) => {
-        dialog.open = "false"
+        active.setTitle(titleInput.value)
+        active.setDescription(descriptionInput.value)
+        active.setDueDate(dueDateInput.value)
+        active.setPriority(priorityInput.value)
+        active.setNotes(notesInput.value)
         clearScreen()
-        activeProject.getActiveProject().createTodo(titleInput.value, descriptionInput.value, dueDateInput.value, priorityInput.value, notesInput.value);
         renderProject(activeProject.getActiveProject())
-        e.preventDefault();
+        e.preventDefault()
     })
 
     form.appendChild(titleLabel)
@@ -85,8 +101,7 @@ const renderCreateTodo = () => {
     form.appendChild(notesLabel)
     form.appendChild(notesInput)
     form.appendChild(submit)
-    dialog.appendChild(form)
-    content.appendChild(dialog)
+    card.appendChild(form)
 }
 
-export default renderCreateTodo
+export default editTodo
