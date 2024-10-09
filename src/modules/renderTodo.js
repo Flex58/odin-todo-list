@@ -46,7 +46,14 @@ const renderTodo = (project) => {
             taskInput.id = "task"
             taskLabel.for =" task"
             taskInput.type = "checkbox"
-            taskLabel.textContent = project.todoList[i].tasks[j]
+            taskLabel.textContent = project.todoList[i].tasks[j].name
+            console.log(project.todoList[i].tasks[j].completionStatus)
+            if (project.todoList[i].tasks[j].completionStatus) {
+                taskInput.checked = true
+            }
+            else {
+                taskInput.checked = false
+            }
             card.appendChild(taskLabel)
             card.appendChild(taskInput)
         }

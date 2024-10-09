@@ -6,7 +6,7 @@ class Project {
     }
     todoList = []
 
-    createTodo(titles, description, dueDate, priority, notes,task) {
+    createTodo(titles, description, dueDate, priority, notes, task) {
         const todo = new Todo(titles, description, dueDate, priority, notes, task)
 
         this.todoList.push(todo)
