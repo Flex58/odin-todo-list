@@ -1,3 +1,6 @@
+import editTodo from "./editTodo"
+import removeTodoPopup from "./removeTodoPopup"
+
 const renderTodo = (project) => {
     for (let i in project.todoList) {
         
