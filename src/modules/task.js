@@ -7,6 +7,10 @@ class Task{
     switchCompletionStatus() {
         this.completionStatus == true ? false:true
     }
+
+    setName(name) {
+        return this.name = name;
+    }
 }
 
 export default Task
