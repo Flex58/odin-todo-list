@@ -21,6 +21,7 @@ const renderCreateProject = () => {
 
     form.addEventListener("submit", (e) => {
         const project = createProject(nameInput.value);
+        console.log("test")
         dialog.open = "false"
         active.setActiveProject(project)
         clearScreen()
