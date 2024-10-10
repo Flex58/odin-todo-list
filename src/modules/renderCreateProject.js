@@ -2,6 +2,7 @@ import createProject from "./createProject"
 import renderProject from "./renderProject"
 import clearScreen from "./clearScreen"
 import activeProject from "./activeProject"
+import saveToStorage from "./saveToStorage"
 
 const renderCreateProject = () => {
     const active  = activeProject;
@@ -21,11 +22,11 @@ const renderCreateProject = () => {
 
     form.addEventListener("submit", (e) => {
         const project = createProject(nameInput.value);
-        console.log("test")
         dialog.open = "false"
         active.setActiveProject(project)
         clearScreen()
         renderProject(project)
+        saveToStorage();
         e.preventDefault()
     })
     

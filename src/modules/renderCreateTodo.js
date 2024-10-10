@@ -1,6 +1,7 @@
 import activeProject from "./activeProject";
 import renderProject from "./renderProject";
 import clearScreen from "./clearScreen";
+import saveToStorage from "./saveToStorage";
 import Task from "./task";
 
 const renderCreateTodo = () => {
@@ -80,6 +81,7 @@ const renderCreateTodo = () => {
                      .createTodo(titleInput.value, descriptionInput.value, dueDateInput.value,
                                  priorityInput.value, notesInput.value, new Task(taskInput.value));
         renderProject(activeProject.getActiveProject())
+        saveToStorage()
         e.preventDefault();
     })
 

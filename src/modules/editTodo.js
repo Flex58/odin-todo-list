@@ -1,6 +1,7 @@
 import activeProject from "./activeProject";
 import clearScreen from "./clearScreen";
 import renderProject from "./renderProject";
+import saveToStorage from "./saveToStorage";
 
 const editTodo = (id) => {
     const active = activeProject.getActiveProject().todoList[id]
@@ -100,6 +101,7 @@ const editTodo = (id) => {
         }
         clearScreen()
         renderProject(activeProject.getActiveProject())
+        saveToStorage();
     })
 
     form.appendChild(titleLabel)

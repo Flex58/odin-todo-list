@@ -1,5 +1,6 @@
 import clearScreen from "./clearScreen"
 import renderProject from "./renderProject"
+import saveToStorage from "./saveToStorage"
 
 const editProject = (project) => {
 
@@ -21,6 +22,7 @@ const editProject = (project) => {
         clearScreen()
         renderProject(project)
         e.preventDefault()
+        saveToStorage();
     })
 
     form.appendChild(nameInput)
