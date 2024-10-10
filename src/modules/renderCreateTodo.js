@@ -1,6 +1,7 @@
 import activeProject from "./activeProject";
 import renderProject from "./renderProject";
 import clearScreen from "./clearScreen";
+import Task from "./task";
 
 const renderCreateTodo = () => {
     const content = document.querySelector("#content")
@@ -62,6 +63,12 @@ const renderCreateTodo = () => {
     const notesInput = document.createElement("textarea")
     notesInput.id = "notes"
 
+    const taskLabel = document.createElement("label")
+    taskLabel.for = "task"
+    taskLabel.textContent = "Task"
+    const taskInput = document.createElement("input")
+    notesInput.id = "task"
+
     const submit = document.createElement("button")
     submit.type = "submit"
     submit.textContent = "Create Todo"
@@ -69,7 +76,9 @@ const renderCreateTodo = () => {
     form.addEventListener("submit", (e) => {
         dialog.open = "false"
         clearScreen()
-        activeProject.getActiveProject().createTodo(titleInput.value, descriptionInput.value, dueDateInput.value, priorityInput.value, notesInput.value);
+        activeProject.getActiveProject()
+                     .createTodo(titleInput.value, descriptionInput.value, dueDateInput.value,
+                                 priorityInput.value, notesInput.value, new Task(taskInput.value));
         renderProject(activeProject.getActiveProject())
         e.preventDefault();
     })
@@ -84,6 +93,8 @@ const renderCreateTodo = () => {
     form.appendChild(priorityInput)
     form.appendChild(notesLabel)
     form.appendChild(notesInput)
+    form.appendChild(taskLabel)
+    form.appendChild(taskInput)
     form.appendChild(submit)
     dialog.appendChild(form)
     content.appendChild(dialog)
