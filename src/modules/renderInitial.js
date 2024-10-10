@@ -1,6 +1,6 @@
 import activeProject from "./activeProject";
 import storageAvailable from "./storageValidation";
-import renderProject from "./renderProject";
+import loadProject from "./loadProject";
 import renderDefault from "./renderDefault";
 
 const renderInitial = () => {
@@ -10,7 +10,7 @@ const renderInitial = () => {
             const loaded = JSON.parse(storage.getItem("projects"))
             activeProject.activeProject = loaded.activeProject
             activeProject.projects = loaded.projects
-            renderProject(activeProject.getActiveProject())
+            loadProject(activeProject.projects)
         }
 
         else {
