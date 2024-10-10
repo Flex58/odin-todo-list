@@ -7,12 +7,14 @@ import clearScreen from "./modules/clearScreen";
 import renderCreateProject from "./modules/renderCreateProject";
 import activeProject from "./modules/activeProject";
 import loadProject from "./modules/loadProject";
+import saveToStorage from "./modules/saveToStorage";
+import renderInitial from "./modules/renderInitial";
 
 
 const createBtn = document.querySelector("#newProject")
 const loadBtn = document.querySelector("#loadProject")
 const active = activeProject
-active.setActiveProject(renderDefault())
+renderInitial();
 
 
 createBtn.addEventListener("click", () => {
@@ -24,14 +26,10 @@ loadBtn.addEventListener("click", () => {
 })
 
 
-const saveBtn = document.createElement("button")
-saveBtn.textContent = "Save"
-document.querySelector("#content").append(saveBtn)
+const saveBtn = document.querySelector("#saveProject")
 
 saveBtn.addEventListener("click", () => {
-    const storage = window["localStorage"]
-    storage.setItem("test", JSON.stringify(activeProject))
-    console.log(storage.getItem("test"))
+    saveToStorage();
 })
 
 
