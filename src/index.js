@@ -11,7 +11,7 @@ const loadBtn = document.querySelector("#loadProject")
 const saveBtn = document.querySelector("#saveProject")
 const active = activeProject
 renderInitial();
-console.log(activeProject.projects[0].name)
+
 
 
 createBtn.addEventListener("click", () => {

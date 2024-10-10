@@ -29,8 +29,6 @@ const renderInitial = () => {
                     }
                 } 
             }
-            console.log(loaded)
-            console.log(activeProject)
             loadProject(activeProject.projects)
         }
 
