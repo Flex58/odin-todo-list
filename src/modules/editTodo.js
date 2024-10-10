@@ -4,6 +4,7 @@ import renderProject from "./renderProject";
 
 const editTodo = (id) => {
     const active = activeProject.getActiveProject().todoList[id]
+    console.log(active)
     const card = document.getElementById(id)
     while (card.hasChildNodes()){
         card.removeChild(card.firstChild)
@@ -88,6 +89,7 @@ const editTodo = (id) => {
 
 
     form.addEventListener("submit", (e) => {
+        e.preventDefault()
         active.setTitle(titleInput.value)
         active.setDescription(descriptionInput.value)
         active.setDueDate(dueDateInput.value)
@@ -98,7 +100,6 @@ const editTodo = (id) => {
         }
         clearScreen()
         renderProject(activeProject.getActiveProject())
-        e.preventDefault()
     })
 
     form.appendChild(titleLabel)
