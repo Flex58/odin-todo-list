@@ -3,8 +3,10 @@ function activeProjectObj() {
     this.projects = [];
     
     this.setActiveProject = (newActive) => {
-        this.projects.push(newActive)
-        return this.activeProject = newActive;        
+        if (!this.projects.includes(newActive)){
+            this.projects.push(newActive) 
+        }
+        return this.activeProject = newActive;
     }
 
     this.getActiveProject = () => {

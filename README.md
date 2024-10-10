@@ -1,7 +1,5 @@
 # odin-template
 
-TODO:   TASK IN TODO CREATION
-        TASK IN TODO EDIT
-        LOAD PROJECT
+TODO:   LOAD PROJECT
         LOCAL STORAGE
         STYLING
