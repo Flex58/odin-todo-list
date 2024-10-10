@@ -1,5 +1,6 @@
 import editTodo from "./editTodo"
 import removeTodoPopup from "./removeTodoPopup"
+import addTaskFunction from "./addTask"
 
 const renderTodo = (project) => {
     for (let i in project.todoList) {
@@ -12,6 +13,7 @@ const renderTodo = (project) => {
         const dueDate = document.createElement("div")
         const priority = document.createElement("div")
         const notes = document.createElement("div")
+        const addTask = document.createElement("button")
         const removeBtn = document.createElement("button")
         const editBtn = document.createElement("button")
 
@@ -21,10 +23,14 @@ const renderTodo = (project) => {
         priority.textContent = project.todoList[i].priority;
         notes.textContent = project.todoList[i].notes;
         
-        
+        addTask.textContent = "Add Task";
         removeBtn.textContent = "Delete";
         editBtn.textContent = "Edit";
         
+        addTask.addEventListener("click", () => {
+            addTaskFunction(card.id, project)
+        })
+
         removeBtn.addEventListener("click", () => {
             removeTodoPopup(card.id)
         })
@@ -47,7 +53,6 @@ const renderTodo = (project) => {
             taskLabel.for =" task"
             taskInput.type = "checkbox"
             taskLabel.textContent = project.todoList[i].tasks[j].name
-            console.log(project.todoList[i].tasks[j].completionStatus)
             if (project.todoList[i].tasks[j].completionStatus) {
                 taskInput.checked = true
             }
@@ -58,6 +63,7 @@ const renderTodo = (project) => {
             card.appendChild(taskInput)
         }
 
+        card.appendChild(addTask)
         card.appendChild(removeBtn)
         card.appendChild(editBtn)
         document.querySelector("#project").appendChild(card)
