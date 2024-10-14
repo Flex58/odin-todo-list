@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    gap: 0;
+}
+
+ body #content,
+ header{
+    padding-left: 5rem;
+    padding-right: 5rem;
+ }
+
+header {
+    background-color: blue;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+      
+}
+
+#nav-right {
+    display: flex;
+    gap: 1rem;
+}
+
+#content {
+    background-color: red;
+}
+
+#projectHeader {
+    display: grid;
+    
+    grid-template-columns: 3fr .5fr .5fr;
+}
+
+#card-container {
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 3rem;
+}
+
+.card {
+    background-color: green;
+    border: 1px solid black;
+    
+}
+

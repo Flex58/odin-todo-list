@@ -3,6 +3,8 @@ import removeTodoPopup from "./removeTodoPopup"
 import addTaskFunction from "./addTask"
 
 const renderTodo = (project) => {
+    const cardContainer = document.createElement("div")
+    cardContainer.id = "card-container"
     for (let i in project.todoList) {
         
         const card = document.createElement("div")
@@ -49,8 +51,8 @@ const renderTodo = (project) => {
         for (let j in project.todoList[i].tasks) {
             const taskInput = document.createElement("input")
             const taskLabel = document.createElement("label")
-            taskInput.id = "task"
-            taskLabel.for =" task"
+            taskInput.id = "task" + "T" + i + "N" + j;
+            taskLabel.setAttribute("for", "task" + "T" + i + "N" + j) 
             taskInput.type = "checkbox"
             taskLabel.textContent = project.todoList[i].tasks[j].name
             if (project.todoList[i].tasks[j].completionStatus) {
@@ -66,9 +68,10 @@ const renderTodo = (project) => {
         card.appendChild(addTask)
         card.appendChild(removeBtn)
         card.appendChild(editBtn)
-        document.querySelector("#project").appendChild(card)
+        cardContainer.appendChild(card)
 
     }
+    document.querySelector("#project").appendChild(cardContainer)
 }
 
 export default renderTodo

@@ -4,11 +4,13 @@ import editProject from "./editProject";
 
 const renderProject = (project) => {
     const projectDiv = document.createElement("div");
+    const projectHeader = document.createElement("div")
     projectDiv.id = "project";
+    projectHeader.id = "projectHeader"
     
     const projectName = document.createElement("h1")
     projectName.textContent = project.name;
-    projectDiv.appendChild(projectName)
+    projectHeader.appendChild(projectName)
 
     const editBtn = document.createElement("button")
     editBtn.textContent = "Edit Project"
@@ -22,8 +24,9 @@ const renderProject = (project) => {
         renderCreateTodo();
     })
 
-    projectDiv.appendChild(newTodoBtn)
-    projectDiv.appendChild(editBtn)
+    projectHeader.appendChild(newTodoBtn)
+    projectHeader.appendChild(editBtn)
+    projectDiv.appendChild(projectHeader)
     document.querySelector("#content").appendChild(projectDiv)
 
     renderTodo(project) 
