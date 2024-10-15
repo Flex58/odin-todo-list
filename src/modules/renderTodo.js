@@ -28,8 +28,11 @@ const renderTodo = (project) => {
         notes.textContent = project.todoList[i].notes;
         
         addTask.textContent = "Add Task";
+        addTask.className = "addTask"
         removeBtn.textContent = "Delete";
+        removeBtn.className = "delete"
         editBtn.textContent = "Edit";
+        editBtn.className = "edit"
         
         addTask.addEventListener("click", () => {
             addTaskFunction(card.id, project)

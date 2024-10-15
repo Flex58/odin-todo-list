@@ -37,6 +37,10 @@ class Todo {
     setTask(task) {
         return this.tasks.push(task);
     }
+
+    removeTask(i) {
+        return this.tasks.splice(i, 1)
+    }
 }
 
 export default Todo;

@@ -52,13 +52,63 @@ nav {
     background-color: green;
     border: 1px solid black;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    border-radius: 10px;
+    height: fit-content;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(auto-fill, 1fr);
 }
 
+.card>div{
+    padding-top: 16px;
+    padding-left: 32px;
+}
 
-.card button:nth-of-type(2)  {
+.card div:not(:first-child),
+.card p {
+    padding-left: 28px;
+}
+
+.card h2 {
+    padding-bottom: 8px;
+}
+
+.addTask,
+.edit,
+.delete {
+    width: fit-content;
+    height: fit-content;
+}
+
+.edit {
+    grid-column: 2/3;
+    justify-self: start;
+    
+}
+
+.addTask {
+   color: blue;
+   margin-left: 45px;
+   
+}
+
+.delete  {
     color: red;
     grid-column: 2/3;
     grid-row: 1/2;
+    justify-self: end;
+    
+}
+
+.taskContainer {
+    display: flex;
+    gap: 10px;
+}
+
+#editTaskForm {
+    grid-row: 2/3;
+    
+}
+
+#editTaskForm input {
+    width: 150px;
 }
