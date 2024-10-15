@@ -23,7 +23,8 @@ const renderInitial = () => {
                     activeProject.projects[i].todoList[j].notes = loaded.projects[i].todoList[j].notes
 
                     for (let k in loaded.projects[i].todoList[j].tasks) {
-                        activeProject.projects[i].todoList[j].tasks.push(new Task("temp"))
+                        activeProject.projects[i].todoList[j].tasks[k] = new Task("temp")
+                        console.log(activeProject.projects[i].todoList[j].tasks.length)
                         activeProject.projects[i].todoList[j].tasks[k].name = loaded.projects[i].todoList[j].tasks[k].name
                         activeProject.projects[i].todoList[j].tasks[k].completionStatus = loaded.projects[i].todoList[j].tasks[k].completionStatus
                     }

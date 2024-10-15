@@ -3,7 +3,7 @@ import clearScreen from "./clearScreen"
 import renderProject from "./renderProject"
 const addTask = (id, project) => {
     const form = document.createElement("form")
-    
+    form.id = "editTaskForm"
     const taskInput = document.createElement("input")
 
     const submit = document.createElement("button")
@@ -19,7 +19,7 @@ const addTask = (id, project) => {
 
     form.appendChild(taskInput)
     form.appendChild(submit)
-    document.querySelector("#content").appendChild(form)
+    document.getElementById(id).childNodes[0].appendChild(form)
 }
 
 export default addTask

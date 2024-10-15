@@ -10,6 +10,8 @@ const renderTodo = (project) => {
         const card = document.createElement("div")
         card.className = "card"
         card.id = i
+        const cardContent = document.createElement("div")
+        cardContainer.className = "cardContent"
         const title = document.createElement("h2");
         const description = document.createElement("p");
         const dueDate = document.createElement("div")
@@ -41,14 +43,16 @@ const renderTodo = (project) => {
             editTodo(card.id)
         })
 
-        card.appendChild(title)
-        card.appendChild(description)
-        card.appendChild(dueDate)
-        card.appendChild(priority)
-        card.appendChild(notes)
+        cardContent.appendChild(title)
+        cardContent.appendChild(description)
+        cardContent.appendChild(dueDate)
+        cardContent.appendChild(priority)
+        cardContent.appendChild(notes)
 
 
         for (let j in project.todoList[i].tasks) {
+            const taskContainer = document.createElement("div")
+            taskContainer.className = "taskContainer"
             const taskInput = document.createElement("input")
             const taskLabel = document.createElement("label")
             taskInput.id = "task" + "T" + i + "N" + j;
@@ -61,10 +65,12 @@ const renderTodo = (project) => {
             else {
                 taskInput.checked = false
             }
-            card.appendChild(taskLabel)
-            card.appendChild(taskInput)
+            taskContainer.appendChild(taskLabel)
+            taskContainer.appendChild(taskInput)
+            cardContent.appendChild(taskContainer)
         }
 
+        card.appendChild(cardContent)
         card.appendChild(addTask)
         card.appendChild(removeBtn)
         card.appendChild(editBtn)

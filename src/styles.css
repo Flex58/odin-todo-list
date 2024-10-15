@@ -1,12 +1,17 @@
 * {
     margin: 0;
     gap: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
 }
 
  body #content,
  header{
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding-left: 50px;
+    padding-right: 50px;
  }
 
 header {
@@ -16,34 +21,44 @@ header {
 nav {
     display: flex;
     justify-content: space-between;
-      
+    padding-top: 16px;
+    padding-bottom: 10px;
 }
 
 #nav-right {
     display: flex;
-    gap: 1rem;
+    gap: 16px;
 }
 
 #content {
     background-color: red;
+    padding-top: 16px;
 }
 
 #projectHeader {
     display: grid;
-    
     grid-template-columns: 3fr .5fr .5fr;
 }
 
 #card-container {
-    padding-top: 3rem;
+    padding-top: 48px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    height: fit-content;
+    gap: 24px;
 }
 
 .card {
     background-color: green;
     border: 1px solid black;
-    
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: repeat(auto-fill, 1fr);
 }
 
+
+.card button:nth-of-type(2)  {
+    color: red;
+    grid-column: 2/3;
+    grid-row: 1/2;
+}
