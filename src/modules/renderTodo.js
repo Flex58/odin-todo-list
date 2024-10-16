@@ -1,6 +1,7 @@
 import editTodo from "./editTodo"
 import removeTodoPopup from "./removeTodoPopup"
 import addTaskFunction from "./addTask"
+import renderProject from "./renderProject"
 
 const renderTodo = (project) => {
     const cardContainer = document.createElement("div")
@@ -39,7 +40,9 @@ const renderTodo = (project) => {
         })
 
         removeBtn.addEventListener("click", () => {
-            removeTodoPopup(card.id)
+            removeTodoPopup(project.todoList[card.id].title,
+                            "todo"),
+                            card.id
         })
 
         editBtn.addEventListener("click", () => {

@@ -1,6 +1,7 @@
 import clearScreen from "./clearScreen"
 import activeProject from "./activeProject"
 import renderProject from "./renderProject"
+import removeTodoPopup from "./removeTodoPopup"
 const loadProject = (projects) => {
     const content = document.querySelector("#content")
     clearScreen()
@@ -13,8 +14,12 @@ const loadProject = (projects) => {
         projectName.textContent = projects[i].name 
 
         const loadBtn = document.createElement("button")
-        loadBtn.className = "loadBtns"
+        loadBtn.className = "loadBtn"
         loadBtn.textContent = "Load"
+
+        const deleteBtn = document.createElement("button")
+        deleteBtn.className = "deleteBtn"
+        deleteBtn.textContent = "Delete Project"
 
         const todoTitleArr = []
         for (let j in projects[i].todoList) {
@@ -33,19 +38,24 @@ const loadProject = (projects) => {
             card.appendChild(todoTitleArr[j])
             card.appendChild(todoDueDate[j])
         }
-        card.appendChild(loadBtn)
-        content.appendChild(card)
-    }
 
-    const buttons = document.querySelectorAll(".loadBtns")
-
-    buttons.forEach((button) => {
-        button.addEventListener("click", (e) => {
-            activeProject.setActiveProject(projects[e.target.parentElement.id])
+        loadBtn.addEventListener("click", () => {
+            activeProject.setActiveProject(projects[i])
             clearScreen()
             renderProject(activeProject.getActiveProject())
         }) 
-    })
+
+        deleteBtn.addEventListener("click", () => {
+            removeTodoPopup(projects[i].name,
+                            "project",
+                            projects[i],
+                            "load")
+        })
+
+        card.appendChild(loadBtn)
+        card.appendChild(deleteBtn)
+        content.appendChild(card)
+    }
     
 }
 
