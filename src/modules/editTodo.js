@@ -79,7 +79,10 @@ const editTodo = (id) => {
 
     const tasksInputs = []
     const taskButtons = []
+    const taskDiv = []
     for (let i in active.tasks) {
+        taskDiv.push(document.createElement("div"))  
+        taskDiv[i].className = "taskDiv"
         tasksInputs.push(document.createElement("input"))
         taskButtons.push(document.createElement("button"))
         tasksInputs[i].id = "t" + i;
@@ -88,11 +91,14 @@ const editTodo = (id) => {
 
         taskButtons[i].addEventListener("click", () => {
             active.removeTask(i)
-            form.removeChild(tasksInputs[i])
-            form.removeChild(taskButtons[i])
+            form.removeChild(taskDiv[i])
+            form.removeChild(document.getElementById("b" + i))
             tasksInputs.splice(i, 1)
             taskButtons.splice(i, 1)
         })
+
+        taskDiv[i].appendChild(tasksInputs[i])
+        taskDiv[i].appendChild(taskButtons[i])
     }
 
     const submit = document.createElement("button")
@@ -126,8 +132,11 @@ const editTodo = (id) => {
     form.appendChild(notesLabel)
     form.appendChild(notesInput)
     for (let i in tasksInputs) {
-        form.appendChild(tasksInputs[i])
-        form.appendChild(taskButtons[i])
+        const taskLabel = document.createElement("label")
+        taskLabel.textContent = "Task"
+        taskLabel.id = "b" + i
+        form.appendChild(taskLabel)
+        form.appendChild(taskDiv[i])
     }
     form.appendChild(submit)
     card.appendChild(form)

@@ -30,6 +30,11 @@ nav {
     gap: 16px;
 }
 
+#nav-left {
+    display: flex;
+    gap: 16px;
+}
+
 #content {
     background-color: red;
     padding-top: 16px;
@@ -59,12 +64,13 @@ nav {
     grid-template-rows: repeat(auto-fill, 1fr);
 }
 
-.card>div{
+.card>div,
+.card>#editTodoForm{
     padding-top: 16px;
     padding-left: 32px;
 }
 
-.card div:not(:first-child),
+.card div:not(:first-child):not(.taskDiv),
 .card p {
     padding-left: 28px;
 }
@@ -112,4 +118,16 @@ nav {
 
 #editTaskForm input {
     width: 150px;
+}
+
+#editTodoForm {
+    display: flex;
+    flex-direction: column;
+}
+#editTodoForm *{
+    color: red;
+}
+
+.taskDiv {
+    display: flex;
 }
