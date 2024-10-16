@@ -5,7 +5,7 @@ class Task{
     }
 
     switchCompletionStatus() {
-        this.completionStatus == true ? false:true
+        return this.completionStatus = this.completionStatus ? false:true
     }
 
     setName(name) {

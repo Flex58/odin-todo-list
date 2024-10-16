@@ -41,8 +41,9 @@ const renderTodo = (project) => {
 
         removeBtn.addEventListener("click", () => {
             removeTodoPopup(project.todoList[card.id].title,
-                            "todo"),
-                            card.id
+                            "todo",
+                            card.id,
+                            "active")
         })
 
         editBtn.addEventListener("click", () => {
@@ -71,6 +72,10 @@ const renderTodo = (project) => {
             else {
                 taskInput.checked = false
             }
+
+            taskInput.addEventListener("change", () => {
+                project.todoList[i].tasks[j].switchCompletionStatus()
+            })
             taskContainer.appendChild(taskLabel)
             taskContainer.appendChild(taskInput)
             cardContent.appendChild(taskContainer)
