@@ -16,17 +16,21 @@ const renderCreateProject = () => {
     nameLabel.textContent = "Project Name"
     const nameInput = document.createElement("input")
     nameInput.id = "name"
+    nameInput.required = true
 
     const submit = document.createElement("button")
     submit.type = "submit"
+    submit.textContent = "Create Project"
 
     form.addEventListener("submit", (e) => {
-        const project = createProject(nameInput.value);
-        dialog.open = "false"
-        active.setActiveProject(project)
-        clearScreen()
-        renderProject(project)
-        saveToStorage();
+        if (nameInput.value) {
+            const project = createProject(nameInput.value);
+            dialog.open = "false"
+            active.setActiveProject(project)
+            clearScreen()
+            renderProject(project)
+            saveToStorage();
+        }
         e.preventDefault()
     })
     
