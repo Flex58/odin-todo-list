@@ -12,6 +12,10 @@ function activeProjectObj() {
     this.getActiveProject = () => {
         return this.activeProject;
     }
+
+    this.removeProject = (i) => {
+        return this.projects.splice(i, 1)
+    }
 };
 
 const activeProject = new activeProjectObj()

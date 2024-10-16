@@ -78,10 +78,21 @@ const editTodo = (id) => {
     notesInput.value = active.notes 
 
     const tasksInputs = []
+    const taskButtons = []
     for (let i in active.tasks) {
         tasksInputs.push(document.createElement("input"))
+        taskButtons.push(document.createElement("button"))
         tasksInputs[i].id = "t" + i;
         tasksInputs[i].value = active.tasks[i].name
+        taskButtons[i].textContent = "X"
+
+        taskButtons[i].addEventListener("click", () => {
+            active.removeTask(i)
+            form.removeChild(tasksInputs[i])
+            form.removeChild(taskButtons[i])
+            tasksInputs.splice(i, 1)
+            taskButtons.splice(i, 1)
+        })
     }
 
     const submit = document.createElement("button")
@@ -96,7 +107,7 @@ const editTodo = (id) => {
         active.setDueDate(dueDateInput.value)
         active.setPriority(priorityInput.value)
         active.setNotes(notesInput.value)
-        for (let i in tasksInputs) {
+        for (let i in active.tasks) {
             active.tasks[i].setName(tasksInputs[i].value)
         }
         clearScreen()
@@ -116,6 +127,7 @@ const editTodo = (id) => {
     form.appendChild(notesInput)
     for (let i in tasksInputs) {
         form.appendChild(tasksInputs[i])
+        form.appendChild(taskButtons[i])
     }
     form.appendChild(submit)
     card.appendChild(form)
